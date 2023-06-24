@@ -7,24 +7,27 @@ import styled from "styled-components";
 const MyTextArea = ({ placeholder, rows, readOnly, style }) => {
   const [value, setValue] = useState("");
 
-  const handleInput = (value) => {
-    setValue(value);
+  const handleInput = (e) => {
+    setValue(e.target.value);
     console.log(value);
   };
 
   return (
-    <div>
-      <textarea
-        onChange={(e) => handleInput(e.target.value)}
+    <Container>
+      <StyledTextarea
+        onChange={handleInput}
         // onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         rows={rows}
         readOnly={readOnly}
       >
         {value}
-      </textarea>
-    </div>
+      </StyledTextarea>
+    </Container>
   );
 };
+
+const Container = styled.div``;
+const StyledTextarea = styled.textarea``;
 
 export default MyTextArea;
