@@ -1,21 +1,36 @@
 import React from "react";
 import styled from "styled-components";
-import MyListItem from "./components/compound/MyListItem";
+import MyListItem from "./MyListItem";
+import MyTitle from "../primitve/MyTitle";
 
-const MyList = ({ items = [] }) => {
+const MyList = ({ items = [], title }) => {
   return (
     <Container>
-      <StyledList>
-        {items.map((item) => {
-          <MyListItem></MyListItem>;
-        })}
-      </StyledList>
+      <MyTitle value={title} />
+      {items.map((item, idx) => (
+        <MyListItem
+          key={idx}
+          title={item.title}
+          author={item.author}
+          createdAt={item.createdAt}
+          likes={item.likes}
+        />
+      ))}
     </Container>
   );
 };
 
-const Container = styled.div``;
-// styled-component는 ${(props) => {props.어쩌고}} 로 받아야 한다고 합니다
-const StyledList = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  margin-top: 1rem;
+
+  > * {
+    padding: 0rem 1rem 1rem 1rem;
+  }
+`;
 
 export default MyList;

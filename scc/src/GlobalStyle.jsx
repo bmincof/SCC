@@ -2,7 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    
+    width: 360px;
+    position: absolute;
+    left: calc(50% - 180px);
   }
 
   //initializer
